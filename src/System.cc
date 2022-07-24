@@ -547,8 +547,11 @@ void System::Shutdown()
 
     if(!mStrSaveAtlasToFile.empty())
     {
+        cout << "Saving ATLAS map" << endl;
         Verbose::PrintMess("Atlas saving to file " + mStrSaveAtlasToFile, Verbose::VERBOSITY_NORMAL);
         SaveAtlas(FileType::BINARY_FILE);
+        cout << "Saved to";
+        cout << mStrSaveAtlasToFile << endl;
     }
 
     /*if(mpViewer)
@@ -1408,9 +1411,12 @@ void System::SaveAtlas(int type){
         // Save the current session
         mpAtlas->PreSave();
 
-        string pathSaveFileName = "./";
-        pathSaveFileName = pathSaveFileName.append(mStrSaveAtlasToFile);
+        string pathSaveFileName = mStrSaveAtlasToFile;
         pathSaveFileName = pathSaveFileName.append(".osa");
+
+        // string pathSaveFileName = "./";
+        // pathSaveFileName = pathSaveFileName.append(mStrSaveAtlasToFile);
+        // pathSaveFileName = pathSaveFileName.append(".osa");
 
         string strVocabularyChecksum = CalculateCheckSum(mStrVocabularyFilePath,TEXT_FILE);
         std::size_t found = mStrVocabularyFilePath.find_last_of("/\\");
@@ -1447,9 +1453,12 @@ bool System::LoadAtlas(int type)
     string strFileVoc, strVocChecksum;
     bool isRead = false;
 
-    string pathLoadFileName = "./";
-    pathLoadFileName = pathLoadFileName.append(mStrLoadAtlasFromFile);
+    string pathLoadFileName = mStrLoadAtlasFromFile;
     pathLoadFileName = pathLoadFileName.append(".osa");
+
+    // string pathLoadFileName = "./";
+    // pathLoadFileName = pathLoadFileName.append(mStrLoadAtlasFromFile);
+    // pathLoadFileName = pathLoadFileName.append(".osa");
 
     if(type == TEXT_FILE) // File text
     {
