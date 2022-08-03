@@ -181,6 +181,7 @@ public:
     double GetTimeFromIMUInit();
     bool isLost();
     bool isFinished();
+    bool isIMUInitialised();
 
     void ChangeDataset();
 

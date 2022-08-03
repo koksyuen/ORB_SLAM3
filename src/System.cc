@@ -1367,6 +1367,11 @@ bool System::isFinished()
     return (GetTimeFromIMUInit()>0.1);
 }
 
+bool System::isIMUInitialised()
+{
+    return (mpAtlas->isImuInitialized());
+}
+
 void System::ChangeDataset()
 {
     if(mpAtlas->GetCurrentMap()->KeyFramesInMap() < 12)
